@@ -18,7 +18,7 @@ object TestMap {
     // 空映射值需要选定一个映射实现并给出类型参数
     val scores2: Seq[(String, Int)] => mutable.HashMap[String, Int] = scala.collection.mutable.HashMap[String, Int]
 
-    //    if(scores.contains("Bob")) scores("Bob") else 0
+    // if(scores.contains("Bob")) scores("Bob") else 0
     // 如果直接使用scores.get(key) 返回一个options对象，要么是some，要么是None
     val bobScore: Int = scores.getOrElse("Bob", 0)
 
@@ -26,6 +26,10 @@ object TestMap {
     scores1("Bob") = 10
 
     scores1("Fred") = 7
+
+    // 以上添加和删除操作可以替换为下面的
+    //    scores1 += ("Bob" -> 10, "Fred" -> 7)
+    //    scores1 -= "Alice"
 
     for (elem <- scores1) {
       println(elem)
@@ -39,6 +43,9 @@ object TestMap {
       println(elem)
     }
 
+    for ((k, v) <- scores1)
+      yield (v, k)
+
     // 已排序映射
     val scores3 = scala.collection.immutable.SortedMap("Alice" -> 10, "Fred" -> 7, "Bob" -> 3, "Cindy" -> 8)
 
@@ -47,10 +54,10 @@ object TestMap {
     // 以java方法得到了一个java映射，如果想要把它转换成一个scala映射，需要映入以下语句
     import scala.collection.JavaConverters.mapAsScalaMap
 
-//    val scores4: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
+    //    val scores4: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
 
     import scala.collection.JavaConverters.propertiesAsScalaMap
-//    val props: scala.collection.Map[String, String] = System.getProperties()
+    //    val props: scala.collection.Map[String, String] = System.getProperties()
 
 
   }
