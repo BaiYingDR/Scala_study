@@ -3,6 +3,12 @@ package com.dr.chapter8
 /**
  * 辅助构造器永远不可能直接调用超类的构造器，只有主构造可以，且时自动调用
  * 调用顺序为先调用超类，再调用子类
+ *
+ * 构造顺序和提前定义
+ *    子类中重写的变量，在超类中用到了
+ *    就会导致直接生成一个长度为 0 的env数组
+ *
+ * 所以在构造器中不要依赖 val 的值
  */
 class Creature {
   println("超类构造")
@@ -44,6 +50,9 @@ class Employee(override val id: Int) extends Person {
   // 子类中重写超类中的抽象字段时不需要override关键字
   var name: String = ""
   val age: Int = 0
+
+  // 非抽象方法重写必须使用override
+  override def toString: String = super.toString
 }
 
 
