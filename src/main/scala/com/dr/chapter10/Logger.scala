@@ -12,7 +12,7 @@ trait Logger {
 /**
  * Logger with Cloneable with Serializable 这里是一个整体，然后再由类来扩展
  */
-class ConsoleLogger extends Logger with Cloneable with Serializable {
+class ConsoleLogger1 extends Logger with Cloneable with Serializable {
 
   // trait 的方法重写加不加override都可以
   override def log(msg: String): Unit = println(msg)
