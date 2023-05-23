@@ -8,6 +8,7 @@ import scala.math._
 
 class FunctionTest2 {
   val num = 3.14
+  // _ 表示确实指的是这个函数，而不是忘记给参数
   val fun = ceil _
 }
 
@@ -33,8 +34,11 @@ object FunctionTest2 {
   }
 
 
+  // 参数是可以接受 Double 并且返回 Double 的函数，
+  // 类型就是 ((Double) => Double) => Double
   def valueAtOneQuarter(f: Double => Double): Double = f(0.25)
 
+  // 参数类型：（Double）=> ((Double) => Double)
   def mulBy(factor: Double) = (x: Double) => factor * x
 
 }
