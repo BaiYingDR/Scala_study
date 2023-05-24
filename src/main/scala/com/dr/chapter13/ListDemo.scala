@@ -41,5 +41,15 @@ object ListDemo {
       if (cur.elem < 0) cur.elem = 0
       cur = cur.next
     }
+
+
+    val list = List(1, 7, 2, 9)
+    println(list.reduceLeft(_ - _)) // ((1-7)-2)-9 = -17
+    println(list.reduceRight(_ - _)) // 1-(7-(2-9)) = -13
+    println(list.foldLeft(0)(_ - _)) // 0-1-7-2-9 = -19
+    println(list.foldRight(0)(_ - _)) // 1-(7-(2-(9-0)) = -13
+
+
+    println(1.to(10).scanLeft(0)(_ + _)) //Vector(0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55)
   }
 }

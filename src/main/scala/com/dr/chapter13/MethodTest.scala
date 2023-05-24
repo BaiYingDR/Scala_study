@@ -60,6 +60,18 @@ object MethodTest {
     println(7 +=: arraybuffer) // ArrayBuffer(7, 1, 2, 3, 4, 5, 6)
     println(arraybuffer ++=: arraybuffer2) // ArrayBuffer(7, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5)
 
+
+    // iterable 适用方法
+    println(arraybuffer.head + "," + arraybuffer.last) // 7,6
+    println(arraybuffer.headOption + "," + arraybuffer.lastOption) // Some(7),Some(6)
+
+    println(arraybuffer.init + "," + arraybuffer.tail) // ArrayBuffer(7, 1, 2, 3, 4, 5),ArrayBuffer(1, 2, 3, 4, 5, 6)
+
+    println(arraybuffer.length + "," + arraybuffer.isEmpty)
+
+    println(arraybuffer.map(_ * 2))
+
+
   }
 
 
